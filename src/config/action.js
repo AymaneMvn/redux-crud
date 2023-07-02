@@ -5,9 +5,6 @@ export const addUserAction = (user) => {
 export const updateUserAction = (newUser) => {
     return { type: "Update_User", payload: newUser };
   };
-  
-
-
 
 export const deleteUserAction = (id) => {
     return {type : 'Delete_User' , payload:id}
