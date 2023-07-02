@@ -1,12 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import {deleteUserAction} from '../config/action'
 
 export default function User() {
   const users = useSelector(data => data.users)
+  const dispatch = useDispatch();
+
+  const handleDelete = id => {
+    dispatch(deleteUserAction(id))
+  }
   return (
     <div>
-        <p><Link to={'/AddUser'}><button>Add User</button></Link></p>
+        <p><Link to={'/add-user'}><button>Add User</button></Link></p>
+        
         <table>
           <thead>
             <tr>
@@ -28,7 +35,7 @@ export default function User() {
                 <button>Edit</button>
                 </Link>
                 <Link>
-                <button>Delete</button>
+                <button onClick={e => handleDelete(user.id)}>Delete</button>
                 </Link>
                 </td> 
             </tr>
